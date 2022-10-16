@@ -1,0 +1,19 @@
+// DSCH 2.6h
+// 7/3/2022 2:54:47 PM
+// C:\Users\LAB 2\Music\2_inverter.sch
+
+module 2_inverter( in1,out1);
+ input in1;
+ output out1;
+ pmos #(24) pmos(w2,vdd,in1); // 2.0u 0.12u
+ nmos #(24) nmos(w2,vss,in1); // 1.0u 0.12u
+ pmos #(17) pmos(out1,vdd,w2); // 2.0u 0.12u
+ nmos #(17) nmos(out1,vss,w2); // 1.0u 0.12u
+endmodule
+
+// Simulation parameters in Verilog Format
+always
+#1000 in1=~in1;
+
+// Simulation parameters
+// in1 CLK 10 10

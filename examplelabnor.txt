@@ -1,0 +1,21 @@
+// DSCH 2.6h
+// 6/18/2022 8:47:36 PM
+// F:\4-1\VLSI Circuit Design\Lab\examplelabnor.sch
+
+module examplelabnor( in1,in2,out1);
+ input in1,in2;
+ output out1;
+ pmos #(10) pmos(w2,vdd,in1); // 2.0u 0.12u
+ pmos #(24) pmos(out1,w2,in2); // 2.0u 0.12u
+ nmos #(24) nmos(out1,vss,in1); // 1.0u 0.12u
+ nmos #(24) nmos(out1,vss,in2); // 1.0u 0.12u
+endmodule
+
+// Simulation parameters in Verilog Format
+always
+#1000 in1=~in1;
+#2000 in2=~in2;
+
+// Simulation parameters
+// in1 CLK 10 10
+// in2 CLK 20 20
